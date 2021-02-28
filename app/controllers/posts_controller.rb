@@ -8,9 +8,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    attach_file if params.dig(:post).dig(:file).present?
 
     if post_params_valid?
-      attach_file if params.dig(:post).dig(:files).present?
       @post.save
 
       redirect_to post_path(@post)
