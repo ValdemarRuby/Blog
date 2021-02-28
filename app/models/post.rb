@@ -4,7 +4,8 @@ class Post < ApplicationRecord
 
   has_one_attached :file
 
-  validates :title, :content, presence: true
+  validates :title, presence: true
+  validates :content, presence: true
   validate :file_size
 
   def file_size
