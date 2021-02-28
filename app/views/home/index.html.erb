@@ -1,53 +1,52 @@
 <main role="main">
-  <section class="pt-4 pb-4">
-    <div class="container">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-8 content-area">
 
-      <h3 class="entry-title">
-        LIST OF POSTS:
-        <small class="text-muted">The latest</small>
-      </h3>
+          <h3 class="entry-title">
+            LIST OF POSTS:
+            <small class="text-muted">The latest</small>
+          </h3>
 
-      <% if @posts.present? %>
-        <% @posts.each.with_index(1) do |post, index| %>
-          <ul class="list-unstyled">
-            <li class="media">
-              <div class="mr-3" alt="Generic placeholder image">
-                <%= image_tag post.file.variant(resize: "64x64") %>
-              </div>
-              <div class="media-body">
-                <h5 class="mt-0"><%= link_to(post.title, post_path(post.id)) %> <span class="badge badge-secondary">New</span> <span class="badge badge-primary badge-pill"><%= post.comments.size %></span></h5>
-                <h6 class="autor">Author: <%= post.user&.nickname %> | Date of creation: <%= post.created_at.to_date %></h6> 
-                <h4><%= truncate(post.content) %></h4>
-              </div>
-            </li>
-          </ul>
-        <% end %>
-      <% end %>
+          <% if @posts.present? %>
+            <% @posts.each.with_index(1) do |post, index| %>
+              <ul class="list-unstyled">
+                <li id="index" class="media">
+                  <% if post.file.attached? %>
+                    <div class="mr-3" alt="Generic placeholder image">
+                      <%= image_tag post.file.variant(resize: "64x64") %>
+                    </div>
+                  <% end %>
+                  <div class="media-body">
+                    <h5 class="mt-0"><%= link_to(post.title, post_path(post.id)) %> <span class="badge badge-secondary">New</span> <span class="badge badge-primary badge-pill"><%= post.comments.size %></span></h5>
+                    <h6 class="autor">Author: <%= post.user&.nickname %> | Date of creation: <%= post.created_at.to_date %></h6> 
+                    <h4><%= truncate(post.content) %></h4>
+                  </div>
+                </li>
+              </ul>
+            <% end %>
+          <% end %>
+
+        </div>
+
+        <div class="col-md-4 sidebar">
+          <% if current_user && current_user.have_posts? %>
+            <h2>My list of posts:</h2>
+
+            <% @my_posts.each.with_index(1) do |my_post, index| %>
+              <aside id="index" class="widget widget-text">
+                <h3 class="widget-title"><%= index %>) <%= link_to(my_post.title, post_path(my_post.id)) %></h3>
+                <% if my_post.file.attached? %>
+                  <div class="mr-3" alt="Generic placeholder image">
+                    <%= image_tag my_post.file.variant(resize: "300x250") %>
+                  </div>
+                <% end %>
+              </aside>
+            <% end %>
+
+          <% end %>
+        </div>
+
+      </div>
     </div>
-
-  </br>
-
-    <% if current_user && current_user.have_posts? %>
-      <h2>My list of posts:</h2>
-      <% @my_posts.each.with_index(1) do |my_post, index| %>
-        <div>
-          <h3><%= index %>) <%= link_to(my_post.title, post_path(my_post.id)) %></h3>
-        </div>
-      <% end %>
-    <% end %>
-
-    </br>
-
-    <h2>List of posts:</h2>
-    <% if @posts.present? %>
-      <% @posts.each.with_index(1) do |post, index| %>
-        <div>
-          <h3><%= index %>) <%= link_to(post.title, post_path(post.id)) %></h3>
-          <h6>Author: <%= post.user&.nickname %></h6>
-          <h6>Date of creation: <%= post.created_at.to_date %></h6>
-        </div>
-      <% end %>
-    <% end %>
-    
-  </section>
 </main>

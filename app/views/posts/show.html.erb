@@ -1,18 +1,27 @@
 <main role="main">
   <div class="pt-4 pb-4">
     <div class="container">
-
-      <div class="card text-white bg-secondary mb-3" style="max-width: 75rem;">
-        <% if @post.file.attached? %>
-          <div class="d-block w-100" align='center'>
-            <%= image_tag @post.file.variant(resize: "720x440") %>
+      <div class="col-md-12 content-area">
+        <header class="entry-header">
+          <h1 class="entry-title">
+            <%= @post.title %>
+          </h1>
+          <div class="entry-meta">
+            <span class="posted-on">
+              <%= "Posted #{@post.created_at.to_date} by " %> <%= @post.user.nickname %> |
+            </span>
+            <span class="count-comments">
+              Has <%= @post.comments.size %> comments
+            </span>
           </div>
-        <% end %>
-
-        <div class="card-header"><%= "Created #{@post.created_at.to_date} by " %> <%= @post.user.nickname %></div>
+        </header>
         <div class="card-body">
-          <h5 class="card-title"><%= @post.title %></h5>
           <p class="card-text"><%= @post.content %></p>
+          <% if @post.file.attached? %>
+            <div class="d-block w-100" align='center'>
+              <%= image_tag @post.file.variant(resize: "720x440") %>
+            </div>
+          <% end %>
         </div>
 
         <%if can? :manage, @post %>
@@ -21,16 +30,17 @@
             <button type="button" class="btn btn-light"><%= link_to 'Delete Post', post_path(@post.id), method: :delete, data: { confirm: 'A you sure?' } %></button>
           </div>
         <% end %>
+
       </div>
-      </br>
 
       <% if @comments.present? %>
-        <h5>Comments:</h5>
-        <div id="comments">
-          <%= render @comments %>
+        <div class="container">
+          <h5 class="comments-block">Comments:</h5>
+          <div id="comments">
+            <%= render @comments %>
+          </div>
         </div>
       <% end %>
-      </br>
 
       <h5 class="add-comment">Add your comment:</h5>
 

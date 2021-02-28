@@ -21,4 +21,64 @@
 
 .entry-title {
   color: #323e4e;
+  font-family: Raleway, Arial, Helvetica, sans-serif;
+}
+
+.entry-header {
+  margin: 0 0 20px;
+}
+
+.card-body {
+  p {
+    color: #333a42;
+    font-size: 16.5px;
+    font-family: "Georgia", Georgia, Times, serif;
+    line-height: 1.8;
+  }
+}
+
+.widget-title {
+  margin: 0 0 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-width: 1024px;
+  position: relative;
+}
+
+.sidebar {
+  padding: 20px 30px;
+  background: #f7f7f7;
+
+  h2 {
+    border-bottom: 5px solid #dfdfdf;
+  }
+
+  a {
+    color: #323e4e;
+  }
+
+  img {
+    margin: 0em 2em 1em 2em;
+  }
+}
+
+.media-body {
+  h4 {
+  color: #333a42;
+  font-size: 16.5px;
+  font-family: "Georgia", Georgia, Times, serif;
+  line-height: 1.8;
+  }
+}
+
+.comments-block {
+  
 }
