@@ -1,0 +1,31 @@
+<%= form_for :user, url: user_session_path do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <div class="card text-center card  bg-default mb-3">
+          <div class="card-header">
+            LOGIN
+          </div>
+          <div class="card-body">
+            <div>
+              <%= f.email_field :email, autocomplete: 'email', placeholder: 'Email' %>
+            </div>
+            </br>
+            <div>
+              <%= f.password_field :password, autocomplete: 'password', placeholder: 'Password' %>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            <a class="btn btn-secondary">
+              <%= f.submit "LOGIN" %>
+            </a>
+          </div>
+
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

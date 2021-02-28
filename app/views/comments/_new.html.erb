@@ -1,0 +1,14 @@
+<%= form_for :comment, url: comments_path, remote: true do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :post_id, value: @post.id %>
+  </div>
+  
+  <div class="form-group", id="content">
+    <%= f.label :comment %>
+    <%= f.text_area :message, class: 'form-control', placeholder: 'Add comment' %>
+  </div>
+
+  <div>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<%= form_for( :comment, url: comment_path(comment), method: :put, remote: true ) do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :post_id, value: @post.id %>
+  </div>
+  
+  <div class="form-group", id="content">
+    <%= f.label :comment %>
+    <%= f.text_area :message, class: 'form-control', placeholder: 'Save comment' %>
+  </div>
+
+  <div>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
