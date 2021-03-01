@@ -9,6 +9,6 @@ class Post < ApplicationRecord
   validate :file_size
 
   def file_size
-    errors.add :file, 'too big, max size 2MB' if file.attached? && file.blob.byte_size > 2000000
+    errors.add :file, 'too big, max size 2MB' if file.attached? && file.blob.byte_size > 2_000_000
   end
 end

@@ -1,37 +1,35 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
-  before_action :check_abilities, only: [:destroy]
+  before_action :find_post, only: %i[show edit update destroy]
+  before_action :check_abilities, only: [ :destroy ]
 
-  def new
-  end
+  def new; end
 
   def create
-    @post = Post.new(post_params)
-    attach_file if params.dig(:post).dig(:file).present?
+    @post = Post.new( post_params )
+    attach_file if params[ :post ][ :file ].present?
 
     if post_params_valid?
       @post.save
 
-      redirect_to post_path(@post)
+      redirect_to post_path( @post )
     else
-      flash[:error] = 'Fields must be filled'
+      flash[ :error ] = 'Fields must be filled'
       render action: 'new'
     end
   end
 
   def show
-    @comments = Comment.where(post_id: @post.id)
+    @comments = Comment.where( post_id: @post.id )
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    attach_file if params.dig(:post).dig(:file).present?
+    attach_file if params[ :post ][ :file ].present?
 
-    if @post.update(post_params)
-      redirect_to post_path(@post)
+    if @post.update( post_params )
+      redirect_to post_path( @post )
     else
       render action: 'edit'
     end
@@ -46,13 +44,13 @@ class PostsController < ApplicationController
   private
 
   def find_post
-    @post = Post.find(params[:id])
+    @post = Post.find( params[ :id ] )
   end
 
   def post_params_valid?
-    post_params[:title].present? &&
-    post_params[:content].present? &&
-    post_params[:user_id].present?
+    post_params[ :title ].present? &&
+      post_params[ :content ].present? &&
+      post_params[ :user_id ].present?
   end
 
   def check_abilities
@@ -64,10 +62,10 @@ class PostsController < ApplicationController
   end
 
   def attach_file
-    @post.file.attach(params[:post].dig(:file))
+    @post.file.attach( params[ :post ][ :file ] )
   end
 
   def post_params
-    params.require(:post).permit(:title, :content).merge(user_id: current_user.id)
+    params.require( :post ).permit( :title, :content ).merge( user_id: current_user.id )
   end
 end
