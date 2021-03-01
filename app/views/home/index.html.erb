@@ -32,7 +32,7 @@
       </div>
 
       <div class="col-md-4 sidebar">
-        <% if current_user && current_user.have_posts? %>
+        <% if current_user && current_user.posts? %>
           <h2>My list of posts:</h2>
 
           <% @my_posts.each.with_index(1) do |my_post, index| %>
