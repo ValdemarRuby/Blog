@@ -1,0 +1,226 @@
+require: rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.7.1
+  Exclude:
+    - db/schema.rb
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - bin/*
+    - '**/*.erb'
+
+# Metrics
+
+# Metrics/AbcSize:
+#   Max: 50
+#   Exclude:
+#     - db/migrate/*
+
+# Metrics/BlockLength:
+#   Max: 125
+#   Exclude:
+#     - spec/interactors/**/*
+#     - spec/jobs/**/*
+#     - spec/models/**/*
+#     - spec/requests/**/*
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# Metrics/MethodLength:
+#   Max: 30
+#   Exclude:
+#     - db/migrate/*
+
+Metrics/ModuleLength:
+  Max: 150
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# Bundler
+
+Bundler/OrderedGems:
+  Enabled: false
+
+# Style
+
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+  MinBranchesCount: 3
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantAssignment:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SafeNavigation:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: false
+
+Style/StabbyLambdaParentheses:
+  EnforcedStyle: require_no_parentheses
+
+Style/SymbolArray:
+  EnforcedStyle: percent
+
+# Layout
+
+Layout/AccessModifierIndentation:
+  Enabled: false
+
+Layout/ClosingParenthesisIndentation:
+  Enabled: false
+
+Layout/CommentIndentation:
+  Enabled: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/FirstArgumentIndentation:
+  Enabled: false
+
+Layout/FirstArrayElementIndentation:
+  Enabled: false
+
+Layout/FirstHashElementIndentation:
+  Enabled: false
+
+Layout/IndentationStyle:
+  Enabled: false
+
+Layout/IndentationWidth:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 150
+
+Layout/MultilineArrayBraceLayout:
+  EnforcedStyle: new_line
+
+Layout/MultilineHashBraceLayout:
+  EnforcedStyle: new_line
+
+Layout/SpaceAroundBlockParameters:
+  EnforcedStyleInsidePipes: no_space
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: space
+
+Layout/SpaceInsideParens:
+  EnforcedStyle: space
+
+Layout/SpaceInsideReferenceBrackets:
+  EnforcedStyle: space
+
+Layout/SpaceInsideStringInterpolation:
+  EnforcedStyle: space
+
+# Lint
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: false
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Lint/SuppressedException:
+  Enabled: false
+
+# Naming
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: error
+
+# Performance
+
+Performance/AncestorsInclude:
+  Enabled: true
+
+Performance/BigDecimalWithNumericArgument:
+  Enabled: true
+
+Performance/RedundantSortBlock:
+  Enabled: true
+
+Performance/RedundantStringChars:
+  Enabled: true
+
+Performance/ReverseFirst:
+  Enabled: true
+
+Performance/SortReverse:
+  Enabled: true
+
+Performance/Squeeze:
+  Enabled: true
+
+Performance/StringInclude:
+  Enabled: true
